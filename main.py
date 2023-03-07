@@ -33,7 +33,7 @@ def __check_default_repository() -> str:
     return str(repository)
 
 
-def __write_directory() -> None:
+def __write_directory() -> str:
     repository = __check_default_repository()
         
     with open(SETTINGS, 'w', encoding='utf-8') as file:
@@ -157,7 +157,7 @@ def uninstall(repository: str, package: str|None = None):
         if output.returncode == 1: input(ERROR)
 
     else:
-        uninstall()
+        uninstall(repository)
 
 
 @header_freeze
@@ -207,6 +207,7 @@ def main():
 
         if _input in COMMANDS.keys():
             COMMANDS[_input](repository)
+            repository = check_repository()
         
     else:
         end_program()
