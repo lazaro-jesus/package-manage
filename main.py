@@ -172,7 +172,7 @@ def package_list(repository: str):
     _input = input('\n' + WARNING_INSTALL + 'Puede instalar paquete introciendo su índice\n> ')
             
     if _input.isnumeric() and int(_input) in range(1, len(pack_list)):
-        install(repository, pack_list[int(_input) - 1])
+        install(repository, pack_list[int(_input) - 1].split('-')[0])
     
 
 @header
